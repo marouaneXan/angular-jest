@@ -43,6 +43,26 @@ describe('UsersService', () => {
     req.flush(usersData);
   })
 
+  it('add new user',()=>{
+    let newUser=[
+      {
+        "id": 1,
+        "username": "tes 3",
+        "lastname": "test 3",
+        "age": "test 3"
+      }
+    ]
+    service.addUser(newUser).subscribe(user=>{
+      expect(user).toEqual(newUser)
+    })
+
+    const req = httpMock.expectOne('http://localhost:3000/users')
+    expect(req.request.method).toBe('POST')
+    expect(req.request.body).toEqual(newUser)
+    req.flush(newUser);
+
+  })
+
   afterEach(() => {
     httpMock.verify()
   })

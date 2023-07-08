@@ -1,21 +1,21 @@
 <h1>Add user</h1>
-<form>
+<form [formGroup]="userForm">
   <div class="form-group">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" formControlName="username" required>
   </div>
 
   <div class="form-group">
     <label for="lastname">Lastname:</label>
-    <input type="text" id="lastname" name="lastname" required>
+    <input type="text" formControlName="lastname" required>
   </div>
 
   <div class="form-group">
     <label for="age">Age:</label>
-    <input type="number" id="age" name="age" required>
+    <input type="number" formControlName="age" required>
   </div>
 
-  <button type="submit">Submit</button>
+  <button type="button" (click)="addUser()">Submit</button>
 </form>
 <h1>List Of Users</h1>
 <table>
